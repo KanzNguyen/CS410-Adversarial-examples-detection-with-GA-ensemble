@@ -22,7 +22,7 @@ Download and upload to Kaggle as datasets before running notebooks.
 
 - **Attacked .pth files**: [Kaggle](https://www.kaggle.com/datasets/seapanther/attacked-pth-files)
 - **CIFAR-10, CIFAR-100, SVHN (batched)**: [Kaggle](https://www.kaggle.com/datasets/seapanther/downloaded-datasets)
-- **Pretrained ResNet weights**: [Kaggle](https://www.kaggle.com/datasets/sealeopard/resnet-pth)
+- **Pretrained ResNet weights**: Originally from [Deep Mahalanobis Detector](https://github.com/pokaxpoka/deep_Mahalanobis_detector) (original links no longer available). Download from our Kaggle mirror: [Kaggle](https://www.kaggle.com/datasets/sealeopard/resnet-pth)
 
 ---
 
