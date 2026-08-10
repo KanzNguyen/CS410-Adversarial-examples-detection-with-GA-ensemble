@@ -29,7 +29,7 @@ flowchart LR
     D1 & D2 & D3 & D4 --> E[Per-layer scores]
     E --> F[GA selects a<br/>detector subset]
     F --> G[Logistic head]
-    G --> H{adversarial<br/>or normal}
+    G --> H[Adversarial detection]
 ```
 
 Each detector reads the mean activation of each of the ResNet's five residual stages and produces
