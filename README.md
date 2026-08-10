@@ -1,12 +1,6 @@
 # Detecting Adversarial Examples with Layer-wise Detector Ensembles
 
-Adversarial images look normal to us but fool a classifier. This project detects them by reading
-a ResNet-34's **internal layer activations** with a bank of per-layer detectors, then stacking
-those detectors with a logistic head. It extends the ENAD approach (LID + Mahalanobis + OCSVM)
-with five **supervised** layer detectors and a **genetic-algorithm** step that selects a compact,
-attack-specific detector subset. Evaluated on CIFAR-10 and SVHN against four attacks
-(FGSM, BIM, DeepFool, CW-L2), plus a **transfer** setting where the detector is trained on one
-attack and tested on another. A small Gradio app scores an uploaded image end-to-end.
+This repository contains code for adversarial example detection on image classification systems. The pipeline combines a hybrid stacking ensemble — unsupervised detectors (LID, Mahalanobis, OCSVM) and supervised classifiers, read from a network's per-layer activations and stacked with a logistic head — with a genetic algorithm (GA) that selects the optimized detector subset for each attack scenario. It extends the ENAD approach by adding five supervised layer detectors and the GA selection step. Evaluated on CIFAR-10 and SVHN against four attacks (FGSM, BIM, DeepFool, CW-L2), plus a transfer setting where the detector is trained on one attack and tested on another. A small Gradio app scores an uploaded image end-to-end.
 
 ---
 
@@ -17,27 +11,8 @@ attack and tested on another. A small Gradio app scores an uploaded image end-to
 - **Stacking head** (logistic regression) over the selected detectors' per-layer scores.
 - **GA subset selection** — frames "which detectors to keep" as a search, optimising
   AUROC×AUPR with an optional parsimony penalty that favours smaller subsets.
-- **Transfer evaluation** — train on FGSM, detect a *different* attack, an honest stress test.
-- **Reproducible** — every stochastic step (torch/numpy/CUDA seeds, PCA, the Bayesian search,
-  the GA) is seeded.
+- **Transfer evaluation** — train on FGSM, detect an unseen attack.
 - **Gradio demo** — upload an image, get *adversarial* / *normal*, for ENAD, ENAD-full, or ENAD-GA.
-
----
-
-## Headline results
-
-On the **standard** setting (train and test on the same attack), adding the supervised detectors
-lifts detection across every attack, and the GA matches full stacking while using far fewer
-detectors — on several attacks a 1-3 detector subset equals or beats all eight.
-
-| | Best AUROC (of ENAD / full / GA) |
-|---|---|
-| CIFAR-10 FGSM | **99.99** (GA uses 1 detector: AdaBoost) |
-| CIFAR-10 BIM | **99.94** (full) |
-| SVHN FGSM | **99.98** (GA, 2 detectors) |
-| SVHN BIM | **99.91** (GA uses 1 detector: AdaBoost, beats full's 99.87) |
-
-Full tables, including the harder DeepFool / CW-L2 attacks and the transfer setting, are below.
 
 ---
 
@@ -82,6 +57,10 @@ so the selector never sees the target attack.
 Metrics are **AUROC / AUPR / F1** (%), all on the held-out test split. **ENAD** is the baseline of
 LID + Mahalanobis + OCSVM; **ENAD-full** adds all five supervised detectors. Full stacking is the
 main configuration; the GA subset is reported separately as an exploratory result.
+
+On the **standard** setting (train and test on the same attack), adding the supervised detectors
+lifts detection across every attack, and the GA matches full stacking while using fewer
+detectors — on several attacks a 1-3 detector subset equals or beats all eight.
 
 <h3>Standard setting (train and test on the same attack)</h3>
 
