@@ -114,7 +114,7 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 
 Adding the supervised detectors helps everywhere, most on the harder DeepFool / CW-L2 attacks. The GA row matches full stacking while using far fewer detectors: on several attacks a 1-3 detector subset equals or beats all eight (e.g. SVHN/BIM, where a single AdaBoost detector at 99.91 AUROC edges out all eight at 99.87).
 
-<h3>Transfer setting (train on FGSM, detect a different attack)</h3>
+<h3>Transfer setting</h3>
 
 <p><em>ENAD "unknown attack" protocol: everything is fit on FGSM and the target attack appears
 only at test, scored by the FGSM detectors. The baseline lands near the ENAD paper's Table 2
@@ -150,7 +150,7 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;</td>
+<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;</td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
@@ -167,7 +167,7 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;</td>
+<td colspan="9" align="center"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;</td>
 </tr>
 </tbody>
 </table>
