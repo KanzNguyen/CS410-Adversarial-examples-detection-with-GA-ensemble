@@ -4,7 +4,7 @@ This repository contains code for adversarial example detection on image classif
 
 ---
 
-## What's here at a glance
+## Key features
 
 - **8 detectors** over 5 ResNet layers: LID, Mahalanobis, OCSVM (the ENAD baseline) + KNN,
   Random Forest, AdaBoost, XGBoost, LightGBM (this project's additions).
