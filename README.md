@@ -129,9 +129,7 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 <th colspan="3">BIM</th><th colspan="3">DeepFool</th><th colspan="3">CW-L2</th>
 </tr>
 <tr>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
+<th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th>
 </tr>
 </thead>
 <tbody>
@@ -150,12 +148,12 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;</td>
+<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;(same subset for all three targets — selected on the fixed FGSM source)</td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
 <td>ENAD</td>
-<td>96.04</td><td>89.54</td><td>87.68</td><td>81.55</td><td>68.94</td><td>66.04</td><td>81.80</td><td>65.88</td><td>67.17</td>
+<td>96.04</td><td>89.54</td><td><b>87.68</b></td><td>81.55</td><td>68.94</td><td>66.04</td><td>81.80</td><td>65.88</td><td>67.17</td>
 </tr>
 <tr>
 <td>ENAD-full</td>
@@ -163,11 +161,11 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td><b>96.61</b></td><td><b>93.28</b></td><td><b>87.65</b></td><td><b>87.77</b></td><td><b>80.54</b></td><td><b>76.67</b></td><td><b>87.35</b></td><td><b>77.47</b></td><td><b>76.97</b></td>
+<td><b>96.61</b></td><td><b>93.28</b></td><td>87.65</td><td><b>87.77</b></td><td><b>80.54</b></td><td><b>76.67</b></td><td><b>87.35</b></td><td><b>77.47</b></td><td><b>76.97</b></td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;</td>
+<td colspan="9" align="center"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;(same subset for all three targets — selected on the fixed FGSM source)</td>
 </tr>
 </tbody>
 </table>
