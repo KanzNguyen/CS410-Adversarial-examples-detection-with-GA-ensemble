@@ -42,7 +42,7 @@ searches this space, scoring each candidate subset by its `AUROC x AUPR` on a he
 GA-validation split, and keeps the best. An optional parsimony term nudges it toward
 smaller subsets when several perform similarly.
 
-**Data splits (no leakage).** Each attack's data is split once into
+**Data splits** Each attack's data is split once into
 train (5%) / detector-val (5%) / GA-val (10%) / **test (80%)**. Detectors and the logistic head
 are fit on train; the GA selects its subset on GA-val; **every reported number is on the test
 split.** The transfer setting fits everything on FGSM: the head
