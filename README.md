@@ -62,8 +62,8 @@ On the **standard** setting (train and test on the same attack), adding the supe
 lifts detection across every attack, and the GA matches full stacking while using fewer
 detectors — on several attacks a 1-3 detector subset equals or beats all eight.
 
-<h3>Standard setting (train and test on the same attack)</h3>
-
+<h3>Standard setting</h3>
+ 
 <table>
 <thead>
 <tr>
@@ -71,70 +71,43 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 <th colspan="3">FGSM</th><th colspan="3">BIM</th><th colspan="3">DeepFool</th><th colspan="3">CW-L2</th>
 </tr>
 <tr>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
-<th>AUROC</th><th>AUPR</th><th>F1</th>
+<th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td rowspan="4"><b>CIFAR-10</b></td>
 <td>ENAD</td>
-<td>99.96</td><td>99.92</td><td>99.65</td>
-<td>99.76</td><td>99.52</td><td>97.15</td>
-<td>92.79</td><td>88.54</td><td>79.81</td>
-<td>90.77</td><td>81.48</td><td>76.92</td>
+<td>99.96</td><td>99.92</td><td>99.65</td><td>99.76</td><td>99.52</td><td>97.15</td><td>92.79</td><td>88.54</td><td>79.81</td><td>90.77</td><td>81.48</td><td>76.92</td>
 </tr>
 <tr>
-<td><b>ENAD-full</b></td>
-<td><b>99.99</b></td><td><b>99.99</b></td><td><b>99.91</b></td>
-<td><b>99.94</b></td><td><b>99.92</b></td><td><b>98.98</b></td>
-<td><b>94.24</b></td><td><b>91.28</b></td><td><b>82.25</b></td>
-<td><b>93.96</b></td><td><b>88.53</b></td><td><b>80.90</b></td>
+<td>ENAD-full</td>
+<td><b>99.99</b></td><td><b>99.99</b></td><td>99.91</td><td><b>99.94</b></td><td><b>99.92</b></td><td>98.98</td><td><b>94.24</b></td><td>91.28</td><td><b>82.25</b></td><td><b>93.96</b></td><td><b>88.53</b></td><td><b>80.90</b></td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td>99.99</td><td>99.99</td><td>99.99</td>
-<td>99.92</td><td>99.80</td><td>99.21</td>
-<td>94.18</td><td>91.34</td><td>82.13</td>
-<td>93.66</td><td>88.01</td><td>80.47</td>
+<td><b>99.99</b></td><td><b>99.99</b></td><td><b>99.99</b></td><td>99.92</td><td>99.80</td><td><b>99.21</b></td><td>94.18</td><td><b>91.34</b></td><td>82.13</td><td>93.66</td><td>88.01</td><td>80.47</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td>
-<td colspan="3"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td>
-<td colspan="3"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td>
-<td colspan="3"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
+<td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td><td colspan="3"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td><td colspan="3"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
 <td>ENAD</td>
-<td>99.51</td><td>97.25</td><td>97.75</td>
-<td>98.30</td><td>96.13</td><td>90.68</td>
-<td>96.44</td><td>94.32</td><td>86.93</td>
-<td>94.53</td><td>89.16</td><td>84.55</td>
+<td>99.51</td><td>97.25</td><td>97.75</td><td>98.30</td><td>96.13</td><td>90.68</td><td>96.44</td><td>94.32</td><td>86.93</td><td>94.53</td><td>89.16</td><td>84.55</td>
 </tr>
 <tr>
-<td><b>ENAD-full</b></td>
-<td><b>99.90</b></td><td><b>99.37</b></td><td><b>99.19</b></td>
-<td><b>99.87</b></td><td><b>99.77</b></td><td><b>98.44</b></td>
-<td><b>97.41</b></td><td><b>96.01</b></td><td><b>89.11</b></td>
-<td><b>95.43</b></td><td><b>92.16</b></td><td><b>85.62</b></td>
+<td>ENAD-full</td>
+<td>99.90</td><td>99.37</td><td>99.19</td><td>99.87</td><td>99.77</td><td><b>98.44</b></td><td><b>97.41</b></td><td><b>96.01</b></td><td><b>89.11</b></td><td><b>95.43</b></td><td>92.16</td><td><b>85.62</b></td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td>99.98</td><td>99.97</td><td>99.41</td>
-<td>99.91</td><td>99.83</td><td>98.28</td>
-<td>97.39</td><td>95.97</td><td>89.06</td>
-<td>95.42</td><td>92.24</td><td>85.42</td>
+<td><b>99.98</b></td><td><b>99.97</b></td><td><b>99.41</b></td><td><b>99.91</b></td><td><b>99.83</b></td><td>98.28</td><td>97.39</td><td>95.97</td><td>89.06</td><td>95.42</td><td><b>92.24</b></td><td>85.42</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td>
-<td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td>
-<td colspan="3"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td>
-<td colspan="3"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
+<td colspan="3"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td><td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td><td colspan="3"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
 </tr>
 </tbody>
 </table>
