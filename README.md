@@ -90,7 +90,7 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td><td colspan="3"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td><td colspan="3"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
+<td colspan="3" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3" align="center"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td><td colspan="3" align="center"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td><td colspan="3" align="center"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
@@ -107,7 +107,7 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td><td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td><td colspan="3"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
+<td colspan="3" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td><td colspan="3" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3" align="center"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td><td colspan="3" align="center"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
 </tr>
 </tbody>
 </table>
