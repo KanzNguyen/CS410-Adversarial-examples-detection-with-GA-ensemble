@@ -86,7 +86,7 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td><b>99.99</b></td><td><b>99.99</b></td><td><b>99.99</b></td><td>99.92</td><td>99.80</td><td><b>99.21</b></td><td>94.18</td><td><b>91.34</b></td><td>82.13</td><td>93.66</td><td>88.01</td><td>80.47</td>
+<td><b>99.99</b></td><td><b>99.99</b></td><td><b>99.99</b></td><td>99.92</td><td>99.80</td><td><b>99.21</b></td><td>94.19</td><td><b>91.34</b></td><td>82.13</td><td>93.66</td><td>88.01</td><td>80.47</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
