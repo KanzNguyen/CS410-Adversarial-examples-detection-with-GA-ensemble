@@ -116,7 +116,7 @@ Adding the supervised detectors helps everywhere, most on the harder DeepFool / 
 
 <h3>Transfer setting</h3>
 
-<p><em>ENAD "unknown attack" protocol: everything is fit on FGSM and the target attack appears
+<p><em>Transfer attack protocol: everything is fit on FGSM and the target attack appears
 only at test, scored by the FGSM detectors. The baseline lands near the ENAD paper's Table 2
 (ResNet), confirming the protocol. No row is uniformly best — the strongest configuration depends
 on dataset and target, so the highest AUROC in each column is highlighted rather than a fixed
@@ -136,36 +136,36 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 <tr>
 <td rowspan="4"><b>CIFAR-10</b></td>
 <td>ENAD</td>
-<td>97.04</td><td>95.94</td><td>89.87</td><td><b>85.63</b></td><td><b>79.58</b></td><td><b>71.38</b></td><td><b>79.38</b></td><td><b>64.84</b></td><td><b>64.86</b></td>
+<td>98.74</td><td>98.05</td><td>94.43</td><td><b>85.47</b></td><td>79.89</td><td>70.85</td><td><b>77.76</b></td><td><b>63.01</b></td><td><b>63.20</b></td>
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td><b>97.62</b></td><td><b>96.62</b></td><td><b>91.31</b></td><td>85.09</td><td>79.22</td><td>70.87</td><td>78.10</td><td>63.47</td><td>63.52</td>
+<td><b>98.77</b></td><td><b>98.09</b></td><td><b>94.55</b></td><td><b>85.47</b></td><td><b>79.90</b></td><td><b>70.88</b></td><td>77.75</td><td>62.97</td><td>63.15</td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td>94.10</td><td>92.21</td><td>83.60</td><td>76.83</td><td>67.17</td><td>60.20</td><td>68.75</td><td>49.22</td><td>55.86</td>
+<td>95.09</td><td>93.09</td><td>84.62</td><td>77.64</td><td>66.90</td><td>61.26</td><td>70.09</td><td>49.93</td><td>56.97</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;</td>
+<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;(same subset for all three targets — selected on the fixed FGSM source)</td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
 <td>ENAD</td>
-<td>96.04</td><td>89.54</td><td><b>87.68</b></td><td>81.55</td><td>68.94</td><td>66.04</td><td>81.80</td><td>65.88</td><td>67.17</td>
+<td>92.75</td><td>81.53</td><td>82.04</td><td>73.12</td><td>58.90</td><td>58.21</td><td>67.62</td><td>49.01</td><td>54.72</td>
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td>90.79</td><td>82.30</td><td>77.15</td><td>80.00</td><td>70.11</td><td>64.53</td><td>72.62</td><td>58.64</td><td>57.30</td>
+<td>92.39</td><td>81.15</td><td>79.20</td><td><b>88.83</b></td><td><b>76.69</b></td><td><b>76.01</b></td><td><b>85.97</b></td><td><b>68.66</b></td><td><b>72.00</b></td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td><b>96.61</b></td><td><b>93.28</b></td><td>87.65</td><td><b>87.77</b></td><td><b>80.54</b></td><td><b>76.67</b></td><td><b>87.35</b></td><td><b>77.47</b></td><td><b>76.97</b></td>
+<td><b>99.52</b></td><td><b>98.80</b></td><td><b>96.00</b></td><td>75.28</td><td>65.81</td><td>57.73</td><td>74.83</td><td>56.05</td><td>60.06</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;</td>
+<td colspan="9" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code> &nbsp;(same subset for all three targets — selected on the fixed FGSM source)</td>
 </tr>
 </tbody>
 </table>
