@@ -148,7 +148,7 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;(same subset for all three targets — selected on the fixed FGSM source)</td>
+<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;</td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
@@ -165,7 +165,7 @@ on dataset and target, so the highest AUROC in each column is highlighted rather
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;(same subset for all three targets — selected on the fixed FGSM source)</td>
+<td colspan="9" align="center"><code>[0, 0, 0, 0, 1, 0, 1, 0]</code> &nbsp;</td>
 </tr>
 </tbody>
 </table>
