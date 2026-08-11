@@ -99,7 +99,7 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td>99.90</td><td>99.37</td><td>99.19</td><td>99.87</td><td>99.77</td><td><b>98.44</b></td><td><b>97.41</b></td><td><b>96.01</b></td><td><b>89.11</b></td><td><b>95.43</b></td><td>92.16</td><td><b>85.62</b></td>
+<td>99.90</td><td>99.37</td><td>99.19</td><td>99.87</td><td>99.77</td><td><b>98.43</b></td><td><b>97.41</b></td><td><b>96.01</b></td><td><b>89.11</b></td><td><b>95.43</b></td><td>92.16</td><td><b>85.62</b></td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
