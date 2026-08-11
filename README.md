@@ -45,8 +45,10 @@ smaller subsets when several perform similarly.
 **Data splits (no leakage).** Each attack's data is split once into
 train (5%) / detector-val (5%) / GA-val (10%) / **test (80%)**. Detectors and the logistic head
 are fit on train (the detector-val split is used earlier, when the detectors are tuned); the GA
-selects its subset on GA-val; **every reported number is on the test split, which selection never
-touches.** In the transfer setting (ENAD's "unknown attack" protocol) everything is fit on FGSM: the head trains on FGSM train, the GA selects on the FGSM GA-val, and the detectors themselves are the FGSM ones. The target attack appears only at test — the FGSM detectors score the target's test split, and that is the reported number. Nothing is fit on the target attack.
+selects its subset on GA-val; **every reported number is on the test split.** In the transfer setting 
+everything is fit on FGSM: the head trains on FGSM train, the GA selects on the FGSM GA-val, and the 
+detectors themselves are the FGSM ones. The target attack appears only at test: the FGSM detectors 
+score the target's test split, and that is the reported numbers.
 
 ---
 
@@ -58,9 +60,11 @@ main configuration; the GA subset is reported separately as an exploratory resul
 
 On the **standard** setting (train and test on the same attack), adding the supervised detectors
 lifts detection across every attack, and the GA matches full stacking while using fewer
-detectors — on several attacks a 1-3 detector subset equals or beats all eight.
+detectors — on several attacks a 1-3 detector subset equals or beats all eight 
+(e.g. SVHN/BIM, where a single AdaBoost detector at 99.91 AUROC edges out all eight at 99.87).
 
-On the **transfer** setting (train on FGSM, detect an unseen attack), the full stacking is the most consistent choice as it helps most on harder targets (e.g. SVHN DeepFool 73->89, CW-L2 68->86).
+On the **transfer** setting (train on FGSM, detect an unseen attack), the full stacking is the most consistent choice 
+as it helps most on harder targets (e.g. SVHN DeepFool 73->89, CW-L2 68->86).
 
 <h3>Standard setting</h3>
  
@@ -111,8 +115,6 @@ On the **transfer** setting (train on FGSM, detect an unseen attack), the full s
 </tr>
 </tbody>
 </table>
-
-Adding the supervised detectors helps everywhere, most on the harder DeepFool / CW-L2 attacks. The GA row matches full stacking while using far fewer detectors: on several attacks a 1-3 detector subset equals or beats all eight (e.g. SVHN/BIM, where a single AdaBoost detector at 99.91 AUROC edges out all eight at 99.87).
 
 <h3>Transfer setting</h3>
 
@@ -167,25 +169,22 @@ only at test, scored by the FGSM detectors.</em></p>
 </tbody>
 </table>
 
-<p>The baseline holds up — no collapse below 50% — and sits in the region of the ENAD paper's
-Table 2 (e.g. CIFAR-10 BIM 98.74 vs 99.47; SVHN BIM 92.75 vs 93.38; SVHN DeepFool 73.12 vs 68.95),
-the check that the "unknown attack" protocol is reproduced. No single configuration dominates, but
-<b>full stacking is the most consistent</b>: it is best or tied-best on five of the six targets,
-and it helps most where transfer is hardest — on SVHN it lifts DeepFool 73&rarr;89 and CW-L2
+<p>No single configuration dominates, but <b>full stacking is the most consistent</b>: it is best or tied-best 
+on five of the six targets and helps most where transfer is hardest: on SVHN it lifts DeepFool 73&rarr;89 and CW-L2
 68&rarr;86 over the baseline. On CIFAR-10 the supervised detectors are roughly neutral
-(full &asymp; baseline), consistent with the distance-based detectors already carrying most of the
-transfer there.</p>
+(fuull &asymp; baseline), which shows the distance-based detectors alone already carry most of the 
+information needed to transfer there.</p>
 <p>The GA is high-variance under transfer: a single AdaBoost nails SVHN BIM (99.52), but because
 the subset is chosen on the near-saturated FGSM source, that same subset transfers poorly to the
 other targets. So GA-transfer is reported as an exploratory finding, and for an unknown attack
-<b>full stacking is the recommended default</b> — it never lands worst by much and captures the
-supervised gains when they exist.</p>
+<b>full stacking is the recommended default</b> — it never lands worst by much and includes the 
+supervised detectors, so it benefits wherever they transfer well.</p>
 ---
  
 ## Parsimony penalty
  
 The GA maximises `AUROC x AUPR - lambda * (#detectors / 8)`. The default `lambda = 0.002` was
-chosen empirically — it tends to select fewer detectors at comparable accuracy across the attacks
+chosen empirically to select fewer detectors at comparable accuracy across the attacks
 tested, which is where the "1-3 detectors ~ all 8" results above come from. It has not been swept
 exhaustively; set `lambda = 0` to disable the penalty and select purely on `AUROC x AUPR`.
  
@@ -203,15 +202,11 @@ dataset that the next notebook reads, so stages can be run and re-run independen
 | `ocsvm lid maha detector` | Fit OCSVM per layer; select best LID/Maha settings | `enad-ocsvm-pkl`, `best-numpy` |
 | `supervised detector` | Template: fit one supervised detector x one attack (KNN/RF/AdaBoost/XGBoost/LightGBM) | `enad-pkl` |
 | `precompute transfer source` | Score each target's test split with the FGSM-fitted OCSVM/supervised models (for the transfer setting) | `enad-xscore-pkl` |
-| `ensemble` | Stacking, GA subset search, standard **and** (source-detector) transfer evaluation | the tables above |
+| `ensemble` | Stacking, GA subset search, standard **and** transfer evaluation | the tables above |
 | `demo assets` | Build seeded assets for the app (Maha stats, LID reference, best m/k, logistic heads) | `enad-demo-assets` |
 | `gradio demo` | Upload an image -> adversarial / normal (ENAD / ENAD-full / ENAD-GA) | live app |
 | `export test images` | Utility: dump clean/adv/noisy PNGs from the attacked tensors to test the demo | test images |
- 
-Shared logic lives in modules the notebooks include: `enad_common` (model, data splits, loaders,
-detector registry), `enad_ensemble` (stacking, GA, standard runner), `enad_xscore` /
-`enad_xtransfer` (source-detector transfer), and `enad_demo` (single-image scoring and the demo).
- 
+
 ---
  
 ## How to run
@@ -225,7 +220,7 @@ Mahalanobis repo for the ResNet definition and data loaders).
 4. **`supervised detector`** — Copy & Edit, set `DETECTOR` / `ADV_TYPE` / `DS_NAME`, run each
    (detector x attack x dataset) shard; collect all outputs into one dataset **`enad-pkl`** (keep
    the `.npy` files next to the `.pkl` — the ensemble reads test scores from them).
-5. **`precompute transfer source`** — Copy & Edit, run each (detector x target) shard; collect into
+5. **`precompute transfer source`** — Copy & Edit, run each (detector x target) shard or run all detectors in ONE loop; collect into
    **`enad-xscore-pkl`**. Only needed for the transfer setting.
 6. **`ensemble`** — set the dataset roots, choose `MODE` / `MODE_T` (`full` / `ga` / `custom`) for
    the standard and transfer runs.
@@ -238,7 +233,7 @@ Point each notebook's `WEIGHTS_DIR` / dataset roots at your own Kaggle dataset p
  
 ## Attribution
  
-This project builds directly on two prior works and adds its own contributions on top.
+This project builds directly on these prior works and adds its own contributions on top.
  
 **ENAD — "Unity is strength: Improving the Detection of Adversarial Examples with Ensemble
 Approaches"** (Craighero et al., BIMIB-DISCo,
@@ -257,17 +252,9 @@ repository (cloned at runtime). The Mahalanobis and LID scoring routines follow 
   design and implementation.
 - The **genetic-algorithm subset selection** — both the idea of framing detector selection as a GA
   search and its implementation.
-- The **transfer-attack evaluation** follows the protocol described in the ENAD paper; since the
-  authors released no code for it, this implementation was reconstructed from the paper's
-  description. The reconstruction is validated against the paper's Table 2 (the ENAD baseline
-  reproduces those numbers closely).
 ---
  
 ## Notes and limitations
- 
-- **Reproducibility over matching prior runs.** All results come from a fully seeded pipeline; they
-  are not expected to match earlier unseeded runs to the decimal. A reproducible, self-consistent
-  set of numbers was preferred.
 - **Single-image demo — LID is approximate.** LID needs a reference set of neighbours. In training
   that reference is the in-batch clean data; a single uploaded image has no batch, so the demo uses
   a fixed sample of the training set instead. Mahalanobis, OCSVM, and the supervised detectors are
