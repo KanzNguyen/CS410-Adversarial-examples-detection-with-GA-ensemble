@@ -102,10 +102,10 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3"><code>AdaBoost</code></td>
-<td colspan="3"><code>Maha+AB+XGB</code></td>
-<td colspan="3"><code>Maha+OCSVM+KNN+RF+AB+XGB</code></td>
-<td colspan="3"><code>Maha+OCSVM+KNN+AB+XGB+LGBM</code></td>
+<td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td>
+<td colspan="3"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td>
+<td colspan="3"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td>
+<td colspan="3"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
@@ -131,10 +131,10 @@ detectors — on several attacks a 1-3 detector subset equals or beats all eight
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3"><code>LID+RF</code></td>
-<td colspan="3"><code>AdaBoost</code></td>
-<td colspan="3"><code>LID+Maha+OCSVM+KNN+AB+XGB</code></td>
-<td colspan="3"><code>LID+Maha+KNN+RF+AB+XGB+LGBM</code></td>
+<td colspan="3"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td>
+<td colspan="3"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td>
+<td colspan="3"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td>
+<td colspan="3"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
 </tr>
 </tbody>
 </table>
