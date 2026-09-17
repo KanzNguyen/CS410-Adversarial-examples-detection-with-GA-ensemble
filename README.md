@@ -54,7 +54,7 @@ score the target's test split, and that is the reported numbers.
 
 ## Results
 
-Metrics are **AUROC / AUPR / F1** (%), all on the held-out test split. **ENAD** is the baseline of
+Metrics are **AUROC / AUPR** (%), all on the held-out test split. **ENAD** is the baseline of
 LID + Mahalanobis + OCSVM; **ENAD-full** adds all five supervised detectors. Full stacking is the
 main configuration; the GA subset is reported separately as an exploratory result.
 
@@ -67,51 +67,51 @@ On the **transfer** setting (train on FGSM, detect an unseen attack), the full s
 as it helps most on harder targets (e.g. SVHN DeepFool 73->89, CW-L2 68->86).
 
 <h3>Standard setting</h3>
- 
+
 <table>
 <thead>
 <tr>
 <th rowspan="2"></th><th rowspan="2"></th>
-<th colspan="3">FGSM</th><th colspan="3">BIM</th><th colspan="3">DeepFool</th><th colspan="3">CW-L2</th>
+<th colspan="2">FGSM</th><th colspan="2">BIM</th><th colspan="2">DeepFool</th><th colspan="2">CW-L2</th>
 </tr>
 <tr>
-<th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th>
+<th>AUROC</th><th>AUPR</th><th>AUROC</th><th>AUPR</th><th>AUROC</th><th>AUPR</th><th>AUROC</th><th>AUPR</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td rowspan="4"><b>CIFAR-10</b></td>
 <td>ENAD</td>
-<td>99.96</td><td>99.92</td><td>99.65</td><td>99.76</td><td>99.52</td><td>97.15</td><td>92.79</td><td>88.54</td><td>79.81</td><td>90.77</td><td>81.48</td><td>76.92</td>
+<td>99.96</td><td>99.92</td><td>99.76</td><td>99.52</td><td>92.79</td><td>88.54</td><td>90.77</td><td>81.48</td>
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td><b>99.99</b></td><td><b>99.99</b></td><td>99.91</td><td><b>99.94</b></td><td><b>99.92</b></td><td>98.98</td><td><b>94.24</b></td><td>91.28</td><td><b>82.25</b></td><td><b>93.96</b></td><td><b>88.53</b></td><td><b>80.90</b></td>
+<td><b>99.99</b></td><td><b>99.99</b></td><td><b>99.94</b></td><td><b>99.92</b></td><td><b>94.24</b></td><td>91.28</td><td><b>93.96</b></td><td><b>88.53</b></td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td><b>99.99</b></td><td><b>99.99</b></td><td><b>99.99</b></td><td>99.92</td><td>99.80</td><td><b>99.21</b></td><td>94.19</td><td><b>91.34</b></td><td>82.13</td><td>93.66</td><td>88.01</td><td>80.47</td>
+<td><b>99.99</b></td><td><b>99.99</b></td><td>99.92</td><td>99.80</td><td>94.19</td><td><b>91.34</b></td><td>93.66</td><td>88.01</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3" align="center"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td><td colspan="3" align="center"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td><td colspan="3" align="center"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
+<td colspan="2" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="2" align="center"><code>[0, 1, 0, 0, 0, 1, 1, 0]</code></td><td colspan="2" align="center"><code>[0, 1, 1, 1, 1, 1, 1, 0]</code></td><td colspan="2" align="center"><code>[0, 1, 1, 1, 0, 1, 1, 1]</code></td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
 <td>ENAD</td>
-<td>99.51</td><td>97.25</td><td>97.75</td><td>98.30</td><td>96.13</td><td>90.68</td><td>96.44</td><td>94.32</td><td>86.93</td><td>94.53</td><td>89.16</td><td>84.55</td>
+<td>99.51</td><td>97.25</td><td>98.30</td><td>96.13</td><td>96.44</td><td>94.32</td><td>94.53</td><td>89.16</td>
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td>99.90</td><td>99.37</td><td>99.19</td><td>99.87</td><td>99.77</td><td><b>98.43</b></td><td><b>97.41</b></td><td><b>96.01</b></td><td><b>89.11</b></td><td><b>95.43</b></td><td>92.16</td><td><b>85.62</b></td>
+<td>99.90</td><td>99.37</td><td>99.87</td><td>99.77</td><td><b>97.41</b></td><td><b>96.01</b></td><td><b>95.43</b></td><td>92.16</td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td><b>99.98</b></td><td><b>99.97</b></td><td><b>99.41</b></td><td><b>99.91</b></td><td><b>99.83</b></td><td>98.28</td><td>97.39</td><td>95.97</td><td>89.06</td><td>95.41</td><td><b>92.25</b></td><td>85.43</td>
+<td><b>99.98</b></td><td><b>99.97</b></td><td><b>99.91</b></td><td><b>99.83</b></td><td>97.39</td><td>95.97</td><td>95.41</td><td><b>92.25</b></td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="3" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td><td colspan="3" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="3" align="center"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td><td colspan="3" align="center"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
+<td colspan="2" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td><td colspan="2" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td><td colspan="2" align="center"><code>[1, 1, 1, 1, 0, 1, 1, 0]</code></td><td colspan="2" align="center"><code>[1, 1, 0, 1, 1, 1, 1, 1]</code></td>
 </tr>
 </tbody>
 </table>
@@ -125,46 +125,46 @@ only at test, scored by the FGSM detectors.</em></p>
 <thead>
 <tr>
 <th rowspan="2"></th><th rowspan="2"></th>
-<th colspan="3">BIM</th><th colspan="3">DeepFool</th><th colspan="3">CW-L2</th>
+<th colspan="2">BIM</th><th colspan="2">DeepFool</th><th colspan="2">CW-L2</th>
 </tr>
 <tr>
-<th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th><th>AUROC</th><th>AUPR</th><th>F1</th>
+<th>AUROC</th><th>AUPR</th><th>AUROC</th><th>AUPR</th><th>AUROC</th><th>AUPR</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td rowspan="4"><b>CIFAR-10</b></td>
 <td>ENAD</td>
-<td>98.74</td><td>98.05</td><td>94.43</td><td><b>85.47</b></td><td>79.89</td><td>70.85</td><td><b>77.76</b></td><td><b>63.01</b></td><td><b>63.20</b></td>
+<td>98.74</td><td>98.05</td><td><b>85.47</b></td><td>79.89</td><td><b>77.76</b></td><td><b>63.01</b></td>
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td><b>98.77</b></td><td><b>98.09</b></td><td><b>94.55</b></td><td><b>85.47</b></td><td><b>79.90</b></td><td><b>70.88</b></td><td>77.75</td><td>62.97</td><td>63.15</td>
+<td><b>98.77</b></td><td><b>98.09</b></td><td><b>85.47</b></td><td><b>79.90</b></td><td>77.75</td><td>62.97</td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td>95.09</td><td>93.09</td><td>84.62</td><td>77.64</td><td>66.90</td><td>61.26</td><td>70.09</td><td>49.93</td><td>56.97</td>
+<td>95.09</td><td>93.09</td><td>77.64</td><td>66.90</td><td>70.09</td><td>49.93</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code> &nbsp;</td>
+<td colspan="6" align="center"><code>[1, 0, 0, 0, 1, 0, 0, 0]</code></td>
 </tr>
 <tr>
 <td rowspan="4"><b>SVHN</b></td>
 <td>ENAD</td>
-<td>92.75</td><td>81.53</td><td>82.04</td><td>73.12</td><td>58.90</td><td>58.21</td><td>67.62</td><td>49.01</td><td>54.72</td>
+<td>92.75</td><td>81.53</td><td>73.12</td><td>58.90</td><td>67.62</td><td>49.01</td>
 </tr>
 <tr>
 <td>ENAD-full</td>
-<td>92.39</td><td>81.15</td><td>79.20</td><td><b>88.83</b></td><td><b>76.69</b></td><td><b>76.01</b></td><td><b>85.97</b></td><td><b>68.66</b></td><td><b>72.00</b></td>
+<td>92.39</td><td>81.15</td><td><b>88.83</b></td><td><b>76.69</b></td><td><b>85.97</b></td><td><b>68.66</b></td>
 </tr>
 <tr>
 <td>ENAD-GA</td>
-<td><b>99.52</b></td><td><b>98.80</b></td><td><b>96.00</b></td><td>75.28</td><td>65.81</td><td>57.73</td><td>74.83</td><td>56.05</td><td>60.06</td>
+<td><b>99.52</b></td><td><b>98.80</b></td><td>75.28</td><td>65.81</td><td>74.83</td><td>56.05</td>
 </tr>
 <tr>
 <td><i>GA subset</i></td>
-<td colspan="9" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code> &nbsp;</td>
+<td colspan="6" align="center"><code>[0, 0, 0, 0, 0, 1, 0, 0]</code></td>
 </tr>
 </tbody>
 </table>
